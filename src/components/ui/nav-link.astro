@@ -1,0 +1,11 @@
+---
+interface Props {
+  href: string;
+}
+// Intellisense doesn't work if class variable is in `` such as `flex`. But works when the variable is in {``} such as {`flex`}.
+// If you add {} around class variable intellisense (also eslint plugin) will start to work.
+const { href } = Astro.props;
+---
+<a class=`text-center text-md font-bold transition-all ${Astro.url.pathname === href ? "text-primary": "text-card-foreground hover:text-primary"}` href={href}>
+  <slot />
+</a>
